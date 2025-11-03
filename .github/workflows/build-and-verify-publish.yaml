@@ -24,7 +24,7 @@ jobs:
       - name: Sett opp gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Bygg bibliotek
+      - name: Bygg plugin og test publisering
         run: ./gradlew publishPlugins --validate-only
         env:
           GRADLE_PUBLISH_KEY: ${{ secrets.GRADLE_PUBLISH_KEY }}
