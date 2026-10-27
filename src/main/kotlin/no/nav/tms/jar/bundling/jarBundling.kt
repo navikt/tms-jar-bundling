@@ -10,7 +10,7 @@ import org.gradle.api.tasks.TaskAction
 import org.gradle.jvm.tasks.Jar
 import java.io.File
 
-abstract class JarBundlingExt {
+abstract class JarBundlingConf {
     abstract val outputDirectory: Property<String>
     abstract val applicationName: Property<String>
 }
@@ -19,14 +19,14 @@ abstract class JarBundling : Plugin<Project> {
 
     override fun apply(target: Project) {
 
-        val ext = target.extensions.create("jarBundling", JarBundlingExt::class.java).apply {
+        val conf = target.extensions.create("jarBundling", JarBundlingConf::class.java).apply {
             outputDirectory.convention("libs")
             applicationName.convention("app")
         }
 
         val configureTask = target.tasks.register("configureJar", ConfigureJarTask::class.java) {
             it.application = target
-            it.applicationName.set(ext.applicationName)
+            it.applicationName.set(conf.applicationName)
 
             val classes = target.tasks.named("classes")
 
@@ -35,7 +35,7 @@ abstract class JarBundling : Plugin<Project> {
 
         val packageTask = target.tasks.register("packageJar", BundleJarsTask::class.java) {
             it.application = target
-            it.outputDirectory.set(ext.outputDirectory)
+            it.outputDirectory.set(conf.outputDirectory)
         }
 
         target.tasks.withType(Jar::class.java) {
