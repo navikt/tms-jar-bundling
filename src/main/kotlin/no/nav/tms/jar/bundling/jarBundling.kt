@@ -15,7 +15,7 @@ abstract class JarBundlingExt {
     abstract val applicationName: Property<String>
 }
 
-abstract class ThinJarBundling : Plugin<Project> {
+abstract class JarBundling : Plugin<Project> {
 
     override fun apply(target: Project) {
 
