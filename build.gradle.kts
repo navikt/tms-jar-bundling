@@ -1,12 +1,10 @@
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.kotlin.dsl.repositories
 
 plugins {
     kotlin("jvm").version("2.1.21")
 
     `java-gradle-plugin`
-    id("maven-publish")
-    id("com.gradle.plugin-publish") version "2.0.0"
+    `maven-publish`
 }
 
 kotlin {
@@ -42,7 +40,7 @@ gradlePlugin {
 }
 
 publishing {
-    repositories{
+    repositories {
         mavenLocal()
         maven {
             url = uri("https://maven.pkg.github.com/navikt/tms-jar-bundling")
