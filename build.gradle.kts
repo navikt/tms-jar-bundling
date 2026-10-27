@@ -22,7 +22,7 @@ repositories {
 
 group = "no.nav.tms"
 
-val libraryVersion: String = properties["lib_version"]?.toString() ?: "latest-local"
+val libraryVersion: String = properties["lib_version"]?.toString() ?: "0.1.0-latest-local"
 
 gradlePlugin {
     website.set("https://github.com/navikt/tms-jar-bundling")
